@@ -1,25 +1,26 @@
-package com.revature.com.revature.models;
+package com.revature.models;
 
 import java.util.Objects;
 
-public class Users {
+public class User {
 
     private String userType;
     private String userName;
+    private String password;
     private String firstName;
     private String lastName;
-    private int doa;
+    private String doa;
 
-    //constructors
+    //Constructors
 
-    public Users() {
-
+    public User() {
         super();
-    } //default constructor.
+    }
 
-    public Users(String userType, String userName, String firstName, String lastName, int doa) {
+    public User(String userType, String userName, String password, String firstName, String lastName, String doa) {
         this.userType = userType;
         this.userName = userName;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.doa = doa;
@@ -43,6 +44,14 @@ public class Users {
         this.userName = userName;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -59,37 +68,39 @@ public class Users {
         this.lastName = lastName;
     }
 
-    public int getDoa() {
+    public String getDoa() {
         return doa;
     }
 
-    public void setDoa(int doa) {
+    public void setDoa(String doa) {
         this.doa = doa;
     }
 
-    //implement equals, hashCode, and toString method
+    //equals, hashCode, toString methods
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Users)) return false;
-        Users users = (Users) o;
-        return getDoa() == users.getDoa() && Objects.equals(getUserType(), users.getUserType()) && Objects.equals(getUserName(), users.getUserName()) && Objects.equals(getFirstName(), users.getFirstName()) && Objects.equals(getLastName(), users.getLastName());
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(getUserType(), user.getUserType()) && Objects.equals(getUserName(), user.getUserName()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getDoa(), user.getDoa());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUserType(), getUserName(), getFirstName(), getLastName(), getDoa());
+        return Objects.hash(getUserType(), getUserName(), getPassword(), getFirstName(), getLastName(), getDoa());
     }
 
     @Override
     public String toString() {
-        return "Users{" +
+        return "User{" +
                 "userType='" + userType + '\'' +
                 ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", doa=" + doa +
+                ", doa='" + doa + '\'' +
                 '}';
     }
 }

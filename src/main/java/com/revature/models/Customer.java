@@ -1,6 +1,6 @@
-package com.revature.com.revature.models;
+package com.revature.models;
 
-public class Customer extends Users{
+public class Customer extends User{
 
     private boolean savingAccount;
     private boolean checkingAccount;
@@ -11,9 +11,9 @@ public class Customer extends Users{
     public Customer() {
     }
 
-    public Customer(String userType, String userName, String firstName, String lastName, int doa, boolean savingAccount,
-                    boolean checkingAccount, double amountSaving, double amountChecking) {
-        super(userType, userName, firstName, lastName, doa);
+    public Customer(String userType, String userName, String password, String firstName, String lastName, String doa,
+                    boolean savingAccount, boolean checkingAccount, double amountSaving, double amountChecking) {
+        super(userType, userName, password, firstName, lastName, doa);
         this.savingAccount = savingAccount;
         this.checkingAccount = checkingAccount;
         this.amountSaving = amountSaving;

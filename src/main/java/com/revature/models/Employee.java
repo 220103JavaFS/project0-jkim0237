@@ -1,20 +1,21 @@
-package com.revature.com.revature.models;
+package com.revature.models;
 
-public class Admin extends Users {
+public class Employee extends User {
 
     private int hiredDate;
 
     //constructors
 
-    public Admin() {
+    public Employee() {
     }
 
-    public Admin(String userType, String userName, String firstName, String lastName, int doa, int hiredDate) {
+    public Employee(String userType, String userName, String firstName, String lastName, String doa, int hiredDate) {
         super(userType, userName, firstName, lastName, doa);
         this.hiredDate = hiredDate;
     }
 
     //Getters and Setters
+
 
     public int getHiredDate() {
         return hiredDate;
@@ -23,5 +24,4 @@ public class Admin extends Users {
     public void setHiredDate(int hiredDate) {
         this.hiredDate = hiredDate;
     }
-
 }
