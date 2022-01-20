@@ -9,8 +9,8 @@ public class Admin extends User {
     public Admin() {
     }
 
-    public Admin(String userType, String userName, String firstName, String lastName, String doa, int hiredDate) {
-        super(userType, userName, firstName, lastName, doa);
+    public Admin(String userType, String userName, String password, String firstName, String lastName, String doa, int hiredDate) {
+        super(userType, userName, password, firstName, lastName, doa);
         this.hiredDate = hiredDate;
     }
 

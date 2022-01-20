@@ -1,58 +1,116 @@
 package com.revature.models;
 
-public class Customer extends User{
 
-    private boolean savingAccount;
-    private boolean checkingAccount;
-    private double amountSaving;
-    private double amountChecking;
+import java.util.Objects;
 
-    //constructors
+public class Customer {
+
+    private int  customerID;
+    private String userType;
+    private String userName;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String birthDate;
+
+
     public Customer() {
     }
 
-    public Customer(String userType, String userName, String password, String firstName, String lastName, String doa,
-                    boolean savingAccount, boolean checkingAccount, double amountSaving, double amountChecking) {
-        super(userType, userName, password, firstName, lastName, doa);
-        this.savingAccount = savingAccount;
-        this.checkingAccount = checkingAccount;
-        this.amountSaving = amountSaving;
-        this.amountChecking = amountChecking;
+    public Customer(int customerID, String userType, String userName, String password, String firstName,
+                    String lastName, String birthDate) {
+        this.customerID = customerID;
+        this.userType = userType;
+        this.userName = userName;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
     }
 
-    //Getters and Setters
-
-    public boolean isSavingAccount() {
-        return savingAccount;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setSavingAccount(boolean savingAccount) {
-        this.savingAccount = savingAccount;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
-    public boolean isCheckingAccount() {
-        return checkingAccount;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setCheckingAccount(boolean checkingAccount) {
-        this.checkingAccount = checkingAccount;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
-    public double getAmountSaving() {
-        return amountSaving;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setAmountSaving(double amountSaving) {
-        this.amountSaving = amountSaving;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public double getAmountChecking() {
-        return amountChecking;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAmountChecking(double amountChecking) {
-        this.amountChecking = amountChecking;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer)) return false;
+        Customer customer = (Customer) o;
+        return getCustomerID() == customer.getCustomerID() && Objects.equals(getUserType(), customer.getUserType()) && Objects.equals(getUserName(), customer.getUserName()) && Objects.equals(getPassword(), customer.getPassword()) && Objects.equals(getFirstName(), customer.getFirstName()) && Objects.equals(getLastName(), customer.getLastName()) && Objects.equals(getBirthDate(), customer.getBirthDate());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCustomerID(), getUserType(), getUserName(), getPassword(), getFirstName(), getLastName(), getBirthDate());
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerID=" + customerID +
+                ", userType='" + userType + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                '}';
     }
 }
+
+
 
 

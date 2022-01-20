@@ -9,7 +9,7 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private String doa;
+    private String birthDate;
 
     //Constructors
 
@@ -17,16 +17,14 @@ public class User {
         super();
     }
 
-    public User(String userType, String userName, String password, String firstName, String lastName, String doa) {
+    public User(String userType, String userName, String password, String firstName, String lastName, String birthDate) {
         this.userType = userType;
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.doa = doa;
+        this.birthDate = birthDate;
     }
-
-    //Getters and Setters
 
     public String getUserType() {
         return userType;
@@ -68,12 +66,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getDoa() {
-        return doa;
+    public String getBirthDate() {
+        return birthDate;
     }
 
-    public void setDoa(String doa) {
-        this.doa = doa;
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     //equals, hashCode, toString methods
@@ -84,12 +82,12 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return Objects.equals(getUserType(), user.getUserType()) && Objects.equals(getUserName(), user.getUserName()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getDoa(), user.getDoa());
+        return Objects.equals(getUserType(), user.getUserType()) && Objects.equals(getUserName(), user.getUserName()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(birthDate, user.birthDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUserType(), getUserName(), getPassword(), getFirstName(), getLastName(), getDoa());
+        return Objects.hash(getUserType(), getUserName(), getPassword(), getFirstName(), getLastName(), birthDate);
     }
 
     @Override
@@ -100,7 +98,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", doa='" + doa + '\'' +
+                ", birthDate='" + birthDate + '\'' +
                 '}';
     }
 }
