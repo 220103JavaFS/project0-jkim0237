@@ -11,5 +11,4 @@ public interface EmployeeDAO {
     Customer findCustomerByUsername(String username);
     List<BankAccount> findAllBankAccounts();
     boolean employeeLogin(String username, String password);
-
 }

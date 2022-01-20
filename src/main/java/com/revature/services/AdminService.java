@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import com.revature.models.Customer;
+import com.revature.models.Employee;
 import com.revature.repos.AdminDAO;
 import com.revature.repos.AdminDAOImpl;
 
@@ -22,5 +23,15 @@ public class AdminService {
 
         return adminDAO.addCustomer(customer);
     }
+
+    public List<Employee> findAllEmployees(){
+
+        return adminDAO.findAllEmployees();
+    }
+
+//    public boolean deleteCustomer(Customer customer){
+//
+//        return adminDAO.deleteCustomer(customer);
+//    }
 
 }

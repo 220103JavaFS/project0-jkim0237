@@ -11,7 +11,7 @@ public interface CustomerDAO {
 
     boolean addCustomer(Customer customer);
     boolean updateCustomer(Customer customer);
-    boolean depositSaving(BankAccount bankAccount);
+//    boolean depositSaving(BankAccount bankAccount);
 
     boolean Login(String username, String password);
 

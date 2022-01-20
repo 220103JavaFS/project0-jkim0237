@@ -1,6 +1,7 @@
 package com.revature.repos;
 
 import com.revature.models.Customer;
+import com.revature.models.Employee;
 import com.revature.utils.ConnectionUtil;
 
 import java.sql.*;
@@ -11,7 +12,7 @@ public class AdminDAOImpl implements AdminDAO {
     @Override
     public List<Customer> findAllCustomers() {
         try (Connection conn = ConnectionUtil.getConnection()) {
-            String sql = "SELECT * FROM customer_info;";
+            String sql = "SELECT * FROM customer;";
 
             Statement statement = conn.createStatement();
 
@@ -42,7 +43,7 @@ public class AdminDAOImpl implements AdminDAO {
     public Customer findByUsername(String username) {
         try (Connection conn = ConnectionUtil.getConnection()) {
             // ? for use of Prepared statement
-            String sql = "SELECT * FROM customer_info WHERE username = ?;";
+            String sql = "SELECT * FROM customer WHERE username = ?;";
 
             PreparedStatement statement = conn.prepareStatement(sql);
 
@@ -94,6 +95,54 @@ public class AdminDAOImpl implements AdminDAO {
             return false;
         }
     }
+
+    public List<Employee> findAllEmployees() {
+        try (Connection conn = ConnectionUtil.getConnection()) {
+            String sql = "SELECT * FROM users;";
+
+            Statement statement = conn.createStatement();
+
+            ResultSet result = statement.executeQuery(sql);
+
+            List<Employee> list = new ArrayList<>();
+
+            while (result.next()) {
+                Employee employee = new Employee();
+                employee.setUserType(result.getString("user_type"));
+                employee.setUserName(result.getString("username"));
+                employee.setPassword(result.getString("user_password"));
+                employee.setFirstName(result.getString("first_name"));
+                employee.setLastName(result.getString("last_name"));
+                employee.setBirthDate(result.getString("birth_date"));
+
+                list.add(employee);
+            }
+
+            return list;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<Employee>();
+    }
+
+//    @Override
+//    public boolean deleteCustomer(Customer customer) {
+//        try (Connection conn = ConnectionUtil.getConnection()) {
+//            String sql = "DELETE FROM customer WHERE username = ?;";
+//
+//            PreparedStatement statement = conn.prepareStatement(sql);
+//
+//            statement.setObject(1, customer);
+//
+//            statement.execute();
+//
+//            return true;
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 
 }
 

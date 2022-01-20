@@ -61,24 +61,24 @@ public class CustomerDAOImpl implements CustomerDAO {
         }
     }
 
-    @Override
-    public boolean depositSaving(BankAccount bankAccount) {
-        try (Connection conn = ConnectionUtil.getConnection()) {
-            String sql = "UPDATE accounts SET saving_amount WHERE username = ?;";
-            PreparedStatement statement = conn.prepareStatement(sql);
-
-            int count = 1;
-            statement.setString(count++, bankAccount.getUserName());
-            statement.setFloat(count++, bankAccount.getSavingAmount());
-
-
-            statement.execute();
-            return true;
-        }catch(SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+//    @Override
+//    public boolean depositSaving() {
+//        try (Connection conn = ConnectionUtil.getConnection()) {
+//            String sql = "UPDATE accounts SET saving_amount WHERE username = ?;";
+//            PreparedStatement statement = conn.prepareStatement(sql);
+//
+//            int count = 1;
+//            statement.setString(count++, bankAccount.getUserName());
+//            statement.setFloat(count++, bankAccount.getSavingAmount());
+//
+//
+//            statement.execute();
+//            return true;
+//        }catch(SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 
     @Override
     public boolean Login(String username, String password) {
