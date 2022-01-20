@@ -7,8 +7,9 @@ import java.util.List;
 
 public interface EmployeeDAO {
 
-    public List<Customer> findAllCustomers();
-    public Customer findCustomerByUsername(String username);
-    public List<BankAccount> findAllBankAccounts();
+    List<Customer> findAllCustomers();
+    Customer findCustomerByUsername(String username);
+    List<BankAccount> findAllBankAccounts();
+    boolean employeeLogin(String username, String password);
 
 }

@@ -13,12 +13,12 @@ public class EmployeeService {
 
     private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
-    public List<Customer> findAllCustomers(){
+    public List<Customer> findAllCustomers() {
 
         return employeeDAO.findAllCustomers();
     }
 
-    public Customer findCustomerByUsername(String username){
+    public Customer findCustomerByUsername(String username) {
 
         return employeeDAO.findCustomerByUsername(username);
     }
@@ -28,4 +28,8 @@ public class EmployeeService {
         return employeeDAO.findAllBankAccounts();
     }
 
+    public boolean employeeLogin(String username, String password) {
+
+        return employeeDAO.employeeLogin(username, password);
+    }
 }

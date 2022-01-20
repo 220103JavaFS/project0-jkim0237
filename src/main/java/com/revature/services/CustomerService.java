@@ -9,11 +9,21 @@ public class CustomerService {
 
     private CustomerDAO customerDAO = new CustomerDAOImpl();
 
-    public boolean addCustomer(Customer customer){
+    public boolean addCustomer(Customer customer) {
+
         return customerDAO.addCustomer(customer);
     }
 
-    public boolean depositSaving(BankAccount bankAccount){
-        if()
+    public boolean updateCustomer(Customer customer) {
+
+        return customerDAO.updateCustomer(customer);
+    }
+
+    public boolean login(String username, String password) {
+
+        return customerDAO.Login(username, password);
+
+//    public boolean depositSaving(BankAccount bankAccount){
+//        if(bankAccount.getSavingAmount() = )
     }
 }

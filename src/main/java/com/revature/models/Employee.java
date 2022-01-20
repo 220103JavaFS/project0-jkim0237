@@ -1,8 +1,5 @@
 package com.revature.models;
 
-import java.sql.Date;
-import java.util.Objects;
-
 public class Employee extends User {
 
     private int hiredDate;

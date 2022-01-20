@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import com.revature.models.BankAccount;
 import com.revature.models.Customer;
+import com.revature.models.UserDTO;
 import com.revature.services.EmployeeService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
@@ -11,6 +12,18 @@ import java.util.List;
 public class EmployeeController implements Controller {
 
     private EmployeeService employeeService = new EmployeeService();
+
+    private Handler employeeLogin = (ctx) -> {
+        UserDTO user = ctx.bodyAsClass(UserDTO.class);
+
+        if(employeeService.employeeLogin(user.username, user.password)){
+            ctx.req.getSession();
+            ctx.status(200);
+        }else {
+            ctx.req.getSession().invalidate();
+            ctx.status(401);
+        }
+    };
 
     Handler getCustomers = (ctx) -> {
         if (ctx.req.getSession(false) != null) {
@@ -43,8 +56,11 @@ public class EmployeeController implements Controller {
         }
     };
 
+
+
     @Override
     public void addRoutes(Javalin app) {
+        app.post("/employeelogin", employeeLogin);
         app.get("/customer", getCustomers);
         app.get("/customer/{userName}", getCustomer);
         app.get("/bankaccounts", getBankAccounts);

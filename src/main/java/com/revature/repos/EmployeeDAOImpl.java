@@ -24,7 +24,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
             while (result.next()) {
                 Customer customer = new Customer();
-                customer.setCustomerID(result.getInt("customer_id"));
                 customer.setUserType(result.getString("user_type"));
                 customer.setUserName(result.getString("username"));
                 customer.setPassword(result.getString("user_password"));
@@ -56,7 +55,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             Customer customer = new Customer();
 
             while (result.next()) {
-                customer.setCustomerID(result.getInt("customer_id"));
                 customer.setUserType(result.getString("user_type"));
                 customer.setUserName(result.getString("username"));
                 customer.setPassword(result.getString("user_password"));
@@ -105,5 +103,23 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         }
         return list;
     }
-}
+
+    @Override
+    public boolean employeeLogin(String username, String password) {
+            try (Connection conn = ConnectionUtil.getConnection()) {
+                String sql = "SELECT * FROM users WHERE username = '" + username + "' and user_password = '" + password + "';";
+                Statement statement = conn.createStatement();
+
+                ResultSet result = statement.executeQuery(sql);
+                if(result.next()){
+                    return true;
+                }else {
+                    return false;
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+            return false;
+        }
+    }
 

@@ -9,10 +9,11 @@ public interface CustomerDAO {
 
 
 
-    public boolean addCustomer(Customer customer);
-    public boolean depositSaving(BankAccount bankAccount);
+    boolean addCustomer(Customer customer);
+    boolean updateCustomer(Customer customer);
+    boolean depositSaving(BankAccount bankAccount);
 
-    public boolean Login(String username, String password);
+    boolean Login(String username, String password);
 
 
 

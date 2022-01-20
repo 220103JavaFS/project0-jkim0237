@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public class Customer {
 
-    private int  customerID;
     private String userType;
     private String userName;
     private String password;
@@ -17,23 +16,14 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int customerID, String userType, String userName, String password, String firstName,
+    public Customer(String userType, String userName, String password, String firstName,
                     String lastName, String birthDate) {
-        this.customerID = customerID;
         this.userType = userType;
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
-    }
-
-    public int getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
     }
 
     public String getUserType() {
@@ -89,19 +79,18 @@ public class Customer {
         if (this == o) return true;
         if (!(o instanceof Customer)) return false;
         Customer customer = (Customer) o;
-        return getCustomerID() == customer.getCustomerID() && Objects.equals(getUserType(), customer.getUserType()) && Objects.equals(getUserName(), customer.getUserName()) && Objects.equals(getPassword(), customer.getPassword()) && Objects.equals(getFirstName(), customer.getFirstName()) && Objects.equals(getLastName(), customer.getLastName()) && Objects.equals(getBirthDate(), customer.getBirthDate());
+        return Objects.equals(getUserType(), customer.getUserType()) && Objects.equals(getUserName(), customer.getUserName()) && Objects.equals(getPassword(), customer.getPassword()) && Objects.equals(getFirstName(), customer.getFirstName()) && Objects.equals(getLastName(), customer.getLastName()) && Objects.equals(getBirthDate(), customer.getBirthDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCustomerID(), getUserType(), getUserName(), getPassword(), getFirstName(), getLastName(), getBirthDate());
+        return Objects.hash(getUserType(), getUserName(), getPassword(), getFirstName(), getLastName(), getBirthDate());
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "customerID=" + customerID +
-                ", userType='" + userType + '\'' +
+                "userType='" + userType + '\'' +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
@@ -110,6 +99,9 @@ public class Customer {
                 '}';
     }
 }
+
+
+
 
 
 
